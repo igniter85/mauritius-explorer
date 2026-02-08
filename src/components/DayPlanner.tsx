@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
+import Link from "next/link";
 import { createPortal } from "react-dom";
 import {
   DndContext,
@@ -18,7 +19,7 @@ import {
   useSortable,
 } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
-import { GripVertical, X, RotateCcw, Car, Plus, Star, MapPinned, LayoutGrid, Info } from "lucide-react";
+import { GripVertical, X, RotateCcw, Car, Plus, Star, MapPinned, LayoutGrid, Info, Maximize2 } from "lucide-react";
 import {
   categoryConfig,
   mobilityConfig,
@@ -579,15 +580,25 @@ function DayCard({
             {day.locationNames.length} stops
           </span>
         </div>
-        {routeInfo && routeInfo.totalTime > 0 && (
-          <div className="flex items-center gap-1 text-xs text-brand-text/50">
-            <Car size={12} />
-            <span>
-              {Math.round(routeInfo.totalTime)} min &middot;{" "}
-              {routeInfo.totalDistance.toFixed(1)} km
-            </span>
-          </div>
-        )}
+        <div className="flex items-center gap-1.5">
+          {routeInfo && routeInfo.totalTime > 0 && (
+            <div className="flex items-center gap-1 text-xs text-brand-text/50">
+              <Car size={12} />
+              <span>
+                {Math.round(routeInfo.totalTime)} min &middot;{" "}
+                {routeInfo.totalDistance.toFixed(1)} km
+              </span>
+            </div>
+          )}
+          <Link
+            href={`/planner/${day.id}`}
+            className="text-brand-text/30 hover:text-brand-primary transition-colors p-1 -m-0.5"
+            aria-label={`Open ${day.label} full view`}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <Maximize2 size={14} />
+          </Link>
+        </div>
       </button>
 
       <SortableContext
@@ -1181,6 +1192,15 @@ export default function DayPlanner({
                 </div>
               </div>
             )}
+
+            {/* Expand to full-page view */}
+            <Link
+              href={`/planner/${compactActiveDay.id}`}
+              className="mt-3 flex items-center justify-center gap-1.5 py-2.5 text-xs font-medium text-brand-primary bg-brand-primary/5 hover:bg-brand-primary/10 active:bg-brand-primary/15 rounded-xl transition-colors touch-manipulation"
+            >
+              <Maximize2 size={13} />
+              Full-page view
+            </Link>
           </div>
         )}
 
