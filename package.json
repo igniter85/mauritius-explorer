@@ -4,11 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "npx tsx scripts/fetch-reviews.ts && next build && npx drizzle-kit push && npx tsx scripts/seed-locations.ts",
     "start": "next start",
     "lint": "eslint",
     "fetch-reviews": "npx tsx scripts/fetch-reviews.ts",
-    "prebuild": "npx tsx scripts/fetch-reviews.ts",
     "db:generate": "npx drizzle-kit generate",
     "db:migrate": "npx drizzle-kit migrate",
     "db:push": "npx drizzle-kit push",
