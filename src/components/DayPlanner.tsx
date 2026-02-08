@@ -195,6 +195,7 @@ function LocationPreview({
                 src={photo.url}
                 alt={name}
                 className="w-full h-32 object-cover"
+                loading="lazy"
               />
             )}
             <div className="p-3">
@@ -282,6 +283,7 @@ function MobilePreviewCard({
             src={photo.url}
             alt={name}
             className="w-full h-44 object-cover"
+            loading="lazy"
           />
         )}
         <div className="p-4">
@@ -376,7 +378,7 @@ function SortableLocationItem({
       <button
         {...attributes}
         {...listeners}
-        className="relative z-20 cursor-grab active:cursor-grabbing text-brand-text/30 hover:text-brand-text/50 flex-shrink-0 p-1 -m-1"
+        className="relative z-20 cursor-grab active:cursor-grabbing text-brand-text/30 hover:text-brand-text/50 flex-shrink-0 p-2 -m-1"
         aria-label={`Reorder ${name}`}
       >
         <GripVertical size={16} />
@@ -407,7 +409,7 @@ function SortableLocationItem({
       {onShowPreview && (
         <button
           onClick={() => onShowPreview(name)}
-          className="relative z-20 text-brand-text/30 hover:text-brand-primary active:text-brand-primary/80 transition-colors flex-shrink-0 cursor-pointer p-1.5 -m-1.5 md:hidden"
+          className="relative z-20 text-brand-text/30 hover:text-brand-primary active:text-brand-primary/80 transition-colors flex-shrink-0 cursor-pointer p-2 -m-1 md:hidden"
           aria-label={`Preview ${name}`}
         >
           <Info size={14} />
@@ -415,7 +417,7 @@ function SortableLocationItem({
       )}
       <button
         onClick={onRemove}
-        className="relative z-20 text-brand-text/30 hover:text-red-500 active:text-red-600 transition-colors flex-shrink-0 cursor-pointer p-1.5 -m-1.5"
+        className="relative z-20 text-brand-text/30 hover:text-red-500 active:text-red-600 transition-colors flex-shrink-0 cursor-pointer p-2 -m-1"
         aria-label={`Remove ${name}`}
       >
         <X size={14} />
@@ -516,7 +518,7 @@ function UnassignedItem({
             e.stopPropagation();
             onShowPreview(name);
           }}
-          className="text-brand-text/30 hover:text-brand-primary active:text-brand-primary/80 transition-colors flex-shrink-0 cursor-pointer p-1.5 -m-1.5 md:hidden"
+          className="text-brand-text/30 hover:text-brand-primary active:text-brand-primary/80 transition-colors flex-shrink-0 cursor-pointer p-2 -m-1 md:hidden"
           aria-label={`Preview ${name}`}
         >
           <Info size={14} />
@@ -600,7 +602,7 @@ function DayCard({
           }`}
         >
           {day.locationNames.length === 0 ? (
-            <p className="text-xs text-brand-text/40 italic py-1">
+            <p className="text-xs text-brand-text/60 italic py-1">
               Tap a suggestion below or drag here
             </p>
           ) : (
@@ -645,7 +647,7 @@ function DayCard({
                 <span className="truncate max-w-[100px] font-medium">
                   {displayFrom}
                 </span>
-                <span className="text-brand-text/25 flex-shrink-0">&rarr;</span>
+                <span className="text-brand-text/50 flex-shrink-0">&rarr;</span>
                 <span className="truncate max-w-[100px] font-medium">
                   {displayTo}
                 </span>
@@ -946,7 +948,7 @@ export default function DayPlanner({
                       <p className="text-xs text-brand-text/40 font-medium mb-1.5 px-1">
                         {regionConfig[region].icon}{" "}
                         {regionConfig[region].label}
-                        <span className="text-brand-text/25 ml-1">
+                        <span className="text-brand-text/50 ml-1">
                           ({remainingByRegion[region]!.length})
                         </span>
                       </p>
@@ -985,7 +987,7 @@ export default function DayPlanner({
                         style={{ color: categoryConfig[cat].color }}
                       />
                       {categoryConfig[cat].label}
-                      <span className="text-brand-text/25">
+                      <span className="text-brand-text/50">
                         ({locs.length})
                       </span>
                     </p>
@@ -1051,7 +1053,7 @@ export default function DayPlanner({
             </span>
             <button
               onClick={resetAll}
-              className="text-xs text-brand-text/40 hover:text-red-500 active:text-red-600 font-medium flex items-center gap-1 cursor-pointer p-1 -m-1 touch-manipulation"
+              className="text-xs text-brand-text/40 hover:text-red-500 active:text-red-600 font-medium flex items-center gap-1 cursor-pointer p-2 -m-1 py-1.5 touch-manipulation"
               aria-label="Reset all days"
             >
               <RotateCcw size={12} />
@@ -1113,7 +1115,7 @@ export default function DayPlanner({
                 }`}
               >
                 {compactActiveDay.locationNames.length === 0 ? (
-                  <p className="text-[13px] text-brand-text/40 italic py-3">
+                  <p className="text-[13px] text-brand-text/60 italic py-3">
                     Tap a suggestion below to add stops
                   </p>
                 ) : (
@@ -1156,7 +1158,7 @@ export default function DayPlanner({
                       <span className="truncate max-w-[100px] font-medium">
                         {displayFrom}
                       </span>
-                      <span className="text-brand-text/25 flex-shrink-0">
+                      <span className="text-brand-text/50 flex-shrink-0">
                         &rarr;
                       </span>
                       <span className="truncate max-w-[100px] font-medium">
@@ -1217,7 +1219,7 @@ export default function DayPlanner({
           </span>
           <button
             onClick={resetAll}
-            className="text-xs text-brand-text/40 hover:text-red-500 font-medium flex items-center gap-1 cursor-pointer p-1 -m-1 touch-manipulation"
+            className="text-xs text-brand-text/40 hover:text-red-500 font-medium flex items-center gap-1 cursor-pointer p-2 -m-1 py-1.5 touch-manipulation"
             aria-label="Reset all days"
           >
             <RotateCcw size={12} />

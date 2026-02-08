@@ -33,25 +33,17 @@ export default function LocationList({
             className={`
               w-full text-left px-4 py-3 border-b border-brand-border/50
               transition-all duration-150 cursor-pointer group
+              active:scale-[0.99] active:bg-brand-border/30
               ${isSelected ? "" : loc.isUserAdded ? "bg-white hover:bg-brand-bg/50" : "bg-brand-bg/30 hover:bg-brand-bg"}
             `}
-            style={{
-              ...(isSelected
+            style={
+              isSelected
                 ? {
                     boxShadow: `inset 3px 0 0 ${config.color}`,
                     backgroundColor: config.color + "08",
                   }
-                : undefined),
-              transform: isSelected ? undefined : undefined,
-            }}
-            onMouseEnter={(e) => {
-              if (!isSelected) {
-                (e.currentTarget as HTMLElement).style.transform = "translateY(-1px)";
-              }
-            }}
-            onMouseLeave={(e) => {
-              (e.currentTarget as HTMLElement).style.transform = "";
-            }}
+                : undefined
+            }
           >
             <div className="flex items-center gap-2">
               <CategoryIcon
@@ -65,24 +57,17 @@ export default function LocationList({
               </span>
               <span className="flex items-center gap-1.5 flex-shrink-0 ml-auto">
                 {loc.isUserAdded && onDeleteLocation && (
-                  <span
-                    role="button"
-                    tabIndex={0}
+                  <button
+                    type="button"
                     onClick={(e) => {
                       e.stopPropagation();
                       onDeleteLocation(loc.name);
                     }}
-                    onKeyDown={(e) => {
-                      if (e.key === "Enter" || e.key === " ") {
-                        e.stopPropagation();
-                        onDeleteLocation(loc.name);
-                      }
-                    }}
-                    className="inline-flex items-center justify-center w-5 h-5 rounded-full text-brand-text/30 hover:text-red-500 hover:bg-red-50 transition-colors cursor-pointer"
-                    title="Remove from My Places"
+                    className="inline-flex items-center justify-center w-8 h-8 rounded-full text-brand-text/40 hover:text-red-500 hover:bg-red-50 active:bg-red-100 transition-colors cursor-pointer"
+                    aria-label={`Remove ${loc.name} from My Places`}
                   >
-                    <Trash2 size={13} />
-                  </span>
+                    <Trash2 size={14} />
+                  </button>
                 )}
                 {(() => {
                   const mob = mobilityConfig[loc.mobility];
@@ -110,7 +95,7 @@ export default function LocationList({
                 )}
               </span>
             </div>
-            <p className="text-[11px] text-brand-text/50 mt-1 line-clamp-2 pl-[24px]">
+            <p className="text-[11px] text-brand-text/70 mt-1 line-clamp-2 pl-[24px]">
               {loc.notes}
             </p>
           </button>

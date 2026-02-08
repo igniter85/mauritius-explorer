@@ -166,10 +166,10 @@ export default function DiscoverPanel({
             <button
               key={r}
               onClick={() => onRadiusChange(r)}
-              className={`flex-1 flex items-center justify-center px-3 py-1.5 rounded-md text-xs font-medium transition-all cursor-pointer ${
+              className={`flex-1 flex items-center justify-center px-3 py-2 rounded-md text-xs font-medium transition-all cursor-pointer ${
                 radius === r
                   ? "bg-white shadow-sm text-brand-text"
-                  : "text-brand-text/40"
+                  : "text-brand-text/60"
               }`}
             >
               {r} km
@@ -204,13 +204,13 @@ export default function DiscoverPanel({
       {/* Discovered places */}
       <div className="border-t border-brand-border mt-1">
         <div className="px-4 py-2 flex items-center justify-between">
-          <p className="text-xs uppercase tracking-wider font-semibold text-brand-text/40">
+          <p className="text-xs uppercase tracking-wider font-semibold text-brand-text/60">
             Discovered nearby
           </p>
           {!discoverLoading && (
             <button
               onClick={onRefresh}
-              className="text-xs text-brand-text/40 hover:text-brand-primary font-medium flex items-center gap-1 cursor-pointer p-1 -m-1 touch-manipulation"
+              className="text-xs text-brand-text/60 hover:text-brand-primary font-medium flex items-center gap-1 cursor-pointer p-1 -m-1 touch-manipulation"
             >
               <RefreshCw size={11} />
               Refresh
@@ -228,7 +228,7 @@ export default function DiscoverPanel({
             <p className="text-xs text-red-500 mb-2">{discoverError}</p>
             <button
               onClick={onRefresh}
-              className="text-xs text-brand-primary font-medium cursor-pointer touch-manipulation"
+              className="text-xs text-brand-primary font-medium py-2 px-3 cursor-pointer touch-manipulation"
             >
               Try again
             </button>
@@ -247,14 +247,14 @@ export default function DiscoverPanel({
                 const config = discoverCategoryConfig[cat];
                 return (
                   <div key={cat}>
-                    <p className="text-xs text-brand-text/40 font-medium mb-1.5 flex items-center gap-1.5">
+                    <p className="text-xs text-brand-text/60 font-medium mb-1.5 flex items-center gap-1.5">
                       <CategoryIcon
                         name={config.icon}
                         size={12}
                         style={{ color: config.color }}
                       />
                       {config.label}
-                      <span className="text-brand-text/25">
+                      <span className="text-brand-text/50">
                         ({places.length})
                       </span>
                     </p>
@@ -311,7 +311,7 @@ function StarRating({
       ))}
       <span className="text-xs text-brand-text/60 ml-1 font-medium">{rating.toFixed(1)}</span>
       {totalReviews != null && (
-        <span className="text-[11px] text-brand-text/40 ml-0.5">
+        <span className="text-[11px] text-brand-text/60 ml-0.5">
           ({totalReviews.toLocaleString()})
         </span>
       )}
@@ -547,11 +547,11 @@ function DiscoveredPlaceDetail({
       ) : reviews.length > 0 ? (
         <div className="mt-3">
           <div className="flex items-center justify-between">
-            <span className="text-[10px] uppercase tracking-wider font-semibold text-brand-text/40 flex items-center gap-1">
+            <span className="text-[10px] uppercase tracking-wider font-semibold text-brand-text/60 flex items-center gap-1">
               <MessageCircle size={10} />
               Reviews ({reviews.length})
             </span>
-            <span className="text-[9px] text-brand-text/30">via Google</span>
+            <span className="text-[10px] text-brand-text/50">via Google</span>
           </div>
           {displayedReviews.map((review, i) => (
             <ReviewCard key={i} review={review} />
@@ -559,7 +559,7 @@ function DiscoveredPlaceDetail({
           {reviews.length > 2 && (
             <button
               onClick={() => setShowAllReviews(!showAllReviews)}
-              className="text-[11px] text-brand-cta hover:text-brand-cta/80 mt-2 font-medium cursor-pointer"
+              className="text-[11px] text-brand-cta hover:text-brand-cta/80 mt-2 py-2 font-medium cursor-pointer"
             >
               {showAllReviews
                 ? "Show less"
@@ -570,7 +570,7 @@ function DiscoveredPlaceDetail({
       ) : null}
 
       {/* Source attribution */}
-      <p className="text-[10px] text-brand-text/30 text-center mt-4">
+      <p className="text-[10px] text-brand-text/50 text-center mt-4">
         Data from Google Places
       </p>
     </div>
@@ -587,6 +587,7 @@ function ReviewCard({ review }: { review: PlaceReview }) {
             alt=""
             className="w-5 h-5 rounded-full"
             referrerPolicy="no-referrer"
+            loading="lazy"
           />
         ) : (
           <div
@@ -715,6 +716,7 @@ function DiscoveredPlaceCard({
           src={place.photoUri}
           alt=""
           className="w-12 h-12 rounded-lg object-cover flex-shrink-0"
+          loading="lazy"
         />
       ) : (
         <div
@@ -740,7 +742,7 @@ function DiscoveredPlaceCard({
               <Star size={10} className="text-amber-400 fill-amber-400" />
               {place.rating.toFixed(1)}
               {place.userRatingCount && (
-                <span className="text-brand-text/30">
+                <span className="text-brand-text/50">
                   ({place.userRatingCount.toLocaleString()})
                 </span>
               )}

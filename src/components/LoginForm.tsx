@@ -97,7 +97,7 @@ export default function LoginForm({ onLogin }: LoginFormProps) {
             </button>
           </form>
 
-          <p className="text-[11px] text-brand-text/30 text-center mt-4">
+          <p className="text-[11px] text-brand-text/50 text-center mt-4">
             Don&apos;t have a token? Contact the trip organizer.
           </p>
         </div>

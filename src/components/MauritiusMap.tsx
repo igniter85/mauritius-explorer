@@ -488,7 +488,7 @@ export default function MauritiusMap({
 
         {/* Attribution */}
         <div className="absolute bottom-2 left-2 z-[500] bg-white/90 backdrop-blur-sm rounded-lg px-2.5 py-1 border border-brand-border">
-          <span className="text-[9px] text-brand-text/40 font-medium">
+          <span className="text-[10px] text-brand-text/60 font-medium">
             Data powered by Google · Routing by OSRM
           </span>
         </div>

@@ -26,12 +26,12 @@ export default function FilterBar({
   return (
     <div>
       <div className="flex items-center justify-between mb-3">
-        <span className="text-[11px] uppercase tracking-wider font-semibold text-brand-primary/50">
+        <span className="text-[11px] uppercase tracking-wider font-semibold text-brand-primary/70">
           Filter
         </span>
         <button
           onClick={onToggleAll}
-          className="text-[11px] text-brand-cta hover:text-brand-cta/80 font-medium cursor-pointer"
+          className="text-[11px] text-brand-cta hover:text-brand-cta/80 font-medium cursor-pointer py-1.5 px-2"
         >
           {allActive ? "Hide all" : "Show all"}
         </button>
@@ -50,7 +50,7 @@ export default function FilterBar({
               key={key}
               onClick={() => onToggleCategory(key)}
               className={`
-                inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-full text-xs font-medium
+                inline-flex items-center gap-1.5 px-3 py-2 rounded-full text-xs font-medium
                 transition-all duration-150 cursor-pointer
                 ${
                   active

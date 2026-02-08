@@ -149,13 +149,14 @@ export default function BottomSheet({
               {userName && onLogout && (
                 <button
                   onClick={onLogout}
-                  className="flex items-center gap-1 text-[11px] text-brand-text/40 hover:text-brand-text/70 transition-colors cursor-pointer touch-manipulation"
+                  className="flex items-center gap-1 text-[11px] text-brand-text/60 hover:text-brand-text/80 transition-colors cursor-pointer touch-manipulation"
+                  aria-label={`Logout ${userName}`}
                 >
                   {userName}
                   <LogOut size={11} />
                 </button>
               )}
-              <span className="text-xs text-brand-text/50">
+              <span className="text-xs text-brand-text/70">
                 {mode === "explore"
                   ? `${filteredLocations.length} of ${allLocations.length} spots`
                   : mode === "planner"
@@ -165,7 +166,7 @@ export default function BottomSheet({
               {isExpanded && (
                 <button
                   onClick={handleCollapse}
-                  className="flex items-center justify-center w-7 h-7 -mr-1 rounded-full bg-brand-bg hover:bg-brand-border/50 transition-colors cursor-pointer touch-manipulation"
+                  className="flex items-center justify-center w-9 h-9 -mr-1 rounded-full bg-brand-bg hover:bg-brand-border/50 transition-colors cursor-pointer touch-manipulation"
                   aria-label="Minimize drawer"
                 >
                   <X size={15} className="text-brand-text/60" />
@@ -178,10 +179,10 @@ export default function BottomSheet({
           <div className="flex mt-2 bg-brand-bg rounded-lg p-0.5">
             <button
               onClick={() => onModeChange("explore")}
-              className={`flex-1 flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-all cursor-pointer ${
+              className={`flex-1 flex items-center justify-center gap-1.5 px-3 py-2 rounded-md text-xs font-medium transition-all cursor-pointer ${
                 mode === "explore"
                   ? "bg-white shadow-sm text-brand-text"
-                  : "text-brand-text/40"
+                  : "text-brand-text/60"
               }`}
             >
               <MapPin size={12} />
@@ -189,10 +190,10 @@ export default function BottomSheet({
             </button>
             <button
               onClick={() => onModeChange("planner")}
-              className={`flex-1 flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-all cursor-pointer ${
+              className={`flex-1 flex items-center justify-center gap-1.5 px-3 py-2 rounded-md text-xs font-medium transition-all cursor-pointer ${
                 mode === "planner"
                   ? "bg-white shadow-sm text-brand-text"
-                  : "text-brand-text/40"
+                  : "text-brand-text/60"
               }`}
             >
               <Calendar size={12} />
@@ -200,10 +201,10 @@ export default function BottomSheet({
             </button>
             <button
               onClick={() => onModeChange("discover")}
-              className={`flex-1 flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-all cursor-pointer ${
+              className={`flex-1 flex items-center justify-center gap-1.5 px-3 py-2 rounded-md text-xs font-medium transition-all cursor-pointer ${
                 mode === "discover"
                   ? "bg-white shadow-sm text-brand-text"
-                  : "text-brand-text/40"
+                  : "text-brand-text/60"
               }`}
             >
               <Compass size={12} />

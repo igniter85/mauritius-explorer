@@ -366,6 +366,7 @@ export default function MapView({
                     src={place.photoUri}
                     alt=""
                     className="w-full h-28 object-cover rounded-lg mb-2 -mt-1"
+                    loading="lazy"
                   />
                 )}
                 <p className="text-sm font-heading font-bold text-brand-text mb-1">

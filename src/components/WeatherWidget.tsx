@@ -56,7 +56,7 @@ export default function WeatherWidget() {
   if (loading || error || !weather) {
     return (
       <div className="absolute top-3 right-14 z-[500] bg-white/90 backdrop-blur-sm rounded-xl shadow-lg border border-brand-border px-3 py-2">
-        <span className="text-[11px] text-brand-text/40">
+        <span className="text-[11px] text-brand-text/60">
           {loading ? "Loading weather..." : "Weather unavailable"}
         </span>
       </div>
@@ -76,12 +76,16 @@ export default function WeatherWidget() {
       {/* Compact — always visible */}
       <button
         onClick={() => setExpanded(!expanded)}
+        aria-label={expanded ? "Collapse weather" : "Show weather forecast"}
         className="flex items-center gap-1.5 px-3 py-1.5 w-full cursor-pointer"
       >
         <img
           src={iconUrl(weather.current.icon)}
           alt={weather.current.description}
           className="w-8 h-8 -my-1"
+          loading="lazy"
+          width={32}
+          height={32}
         />
         <span className="text-base font-bold text-brand-text">
           {weather.current.temp}°C
@@ -130,11 +134,14 @@ export default function WeatherWidget() {
                   src={iconUrl(day.icon)}
                   alt={day.description}
                   className="w-6 h-6"
+                  loading="lazy"
+                  width={24}
+                  height={24}
                 />
                 <span className="text-brand-text font-medium">
                   {day.high}°
                 </span>
-                <span className="text-brand-text/40">{day.low}°</span>
+                <span className="text-brand-text/60">{day.low}°</span>
                 {day.pop > 20 && (
                   <span className="text-brand-primary ml-auto flex items-center gap-0.5">
                     <Droplets size={9} />
@@ -145,7 +152,7 @@ export default function WeatherWidget() {
             ))}
           </div>
 
-          <p className="text-[9px] text-brand-text/30 mt-2 text-right">
+          <p className="text-[10px] text-brand-text/50 mt-2 text-right">
             Mauritius · OpenWeather
           </p>
         </div>

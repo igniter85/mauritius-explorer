@@ -114,6 +114,26 @@ body {
   z-index: 999 !important;
 }
 
+/* Mobile: eliminate 300ms tap delay globally */
+* {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/* Prevent scroll chaining on scrollable panels */
+.overflow-y-auto {
+  overscroll-behavior: contain;
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 /* Smooth scrollbar */
 .overflow-y-auto::-webkit-scrollbar {
   width: 4px;

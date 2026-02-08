@@ -116,15 +116,16 @@ export default function Sidebar({
             </h1>
             <button
               onClick={() => onSelectLocation("C Mauritius (Hotel)")}
-              className="flex items-center gap-1 px-2 py-1 rounded-lg text-[11px] font-medium text-brand-text/50 hover:text-brand-text hover:bg-brand-bg transition-all cursor-pointer"
+              className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-[11px] font-medium text-brand-text/70 hover:text-brand-text hover:bg-brand-bg transition-all cursor-pointer"
               title="Go to hotel"
+              aria-label="Go to hotel"
             >
               <Hotel size={14} />
               Our Hotel
             </button>
           </div>
           <div className="flex items-center justify-between mt-1 pl-7 mb-3">
-            <p className="text-xs text-brand-text/50">
+            <p className="text-xs text-brand-text/70">
               {mode === "explore"
                 ? `${filteredLocations.length} of ${allLocations.length} locations`
                 : mode === "planner"
@@ -134,7 +135,8 @@ export default function Sidebar({
             {userName && onLogout && (
               <button
                 onClick={onLogout}
-                className="flex items-center gap-1 text-[11px] text-brand-text/40 hover:text-brand-text/70 transition-colors cursor-pointer"
+                className="flex items-center gap-1 text-[11px] text-brand-text/60 hover:text-brand-text/80 transition-colors cursor-pointer"
+                aria-label={`Logout ${userName}`}
               >
                 {userName}
                 <LogOut size={11} />
@@ -146,10 +148,10 @@ export default function Sidebar({
           <div className="flex bg-brand-bg rounded-lg p-0.5">
             <button
               onClick={() => onModeChange("explore")}
-              className={`flex-1 flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-all cursor-pointer ${
+              className={`flex-1 flex items-center justify-center gap-1.5 px-3 py-2 rounded-md text-xs font-medium transition-all cursor-pointer ${
                 mode === "explore"
                   ? "bg-white shadow-sm text-brand-text"
-                  : "text-brand-text/40"
+                  : "text-brand-text/60"
               }`}
             >
               <MapPin size={13} />
@@ -157,10 +159,10 @@ export default function Sidebar({
             </button>
             <button
               onClick={() => onModeChange("planner")}
-              className={`flex-1 flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-all cursor-pointer ${
+              className={`flex-1 flex items-center justify-center gap-1.5 px-3 py-2 rounded-md text-xs font-medium transition-all cursor-pointer ${
                 mode === "planner"
                   ? "bg-white shadow-sm text-brand-text"
-                  : "text-brand-text/40"
+                  : "text-brand-text/60"
               }`}
             >
               <Calendar size={13} />
@@ -168,10 +170,10 @@ export default function Sidebar({
             </button>
             <button
               onClick={() => onModeChange("discover")}
-              className={`flex-1 flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-all cursor-pointer ${
+              className={`flex-1 flex items-center justify-center gap-1.5 px-3 py-2 rounded-md text-xs font-medium transition-all cursor-pointer ${
                 mode === "discover"
                   ? "bg-white shadow-sm text-brand-text"
-                  : "text-brand-text/40"
+                  : "text-brand-text/60"
               }`}
             >
               <Compass size={13} />
@@ -242,8 +244,9 @@ export default function Sidebar({
       {/* Toggle button */}
       <button
         onClick={() => setCollapsed(!collapsed)}
-        className="absolute top-3 z-[1000] bg-white shadow-lg rounded-lg p-2 hover:bg-brand-bg transition-all duration-300 border border-brand-border cursor-pointer"
+        className="absolute top-3 z-[1000] bg-white shadow-lg rounded-lg p-2.5 hover:bg-brand-bg transition-all duration-300 border border-brand-border cursor-pointer"
         style={{ left: collapsed ? "12px" : "348px" }}
+        aria-label={collapsed ? "Open sidebar" : "Close sidebar"}
       >
         {collapsed ? (
           <Menu size={18} className="text-brand-text" />
