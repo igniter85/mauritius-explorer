@@ -98,7 +98,11 @@ export default function LoginForm({ onLogin }: LoginFormProps) {
           </form>
 
           <p className="text-[11px] text-brand-text/50 text-center mt-4">
-            Don&apos;t have a token? Contact the trip organizer.
+            <span className="font-semibold">No access token?</span> Bribe Stefan with a Cuba Libre 🍹
+            <br />
+            <span className="text-brand-text/35 italic">
+              (No other payment methods accepted.)
+            </span>
           </p>
         </div>
       </div>
