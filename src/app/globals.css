@@ -1,0 +1,127 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-heading: var(--font-heading);
+  --font-body: var(--font-body);
+
+  --color-brand-primary: #0EA5E9;
+  --color-brand-secondary: #38BDF8;
+  --color-brand-cta: #F97316;
+  --color-brand-bg: #F0F9FF;
+  --color-brand-text: #0C4A6E;
+  --color-brand-border: #E0F2FE;
+}
+
+/* Animations */
+@keyframes marker-pop {
+  0% { transform: scale(0); opacity: 0; }
+  70% { transform: scale(1.15); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes fade-in-up {
+  0% { opacity: 0; transform: translateY(8px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.animate-marker-pop {
+  animation: marker-pop 0.3s ease-out;
+}
+
+@keyframes hotel-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.4; }
+  50% { transform: scale(1.5); opacity: 0; }
+}
+
+.hotel-marker-pulse {
+  animation: hotel-pulse 2s ease-out infinite;
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, #E0F2FE 25%, #BAE6FD 50%, #E0F2FE 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.3s ease-out;
+}
+
+@keyframes slide-up {
+  0% { opacity: 0; transform: translateY(100%); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.animate-slide-up {
+  animation: slide-up 0.25s ease-out;
+}
+
+/* Leaflet popup overrides */
+.leaflet-popup-content-wrapper {
+  border-radius: 16px !important;
+  box-shadow:
+    0 10px 25px -5px rgba(14, 165, 233, 0.15),
+    0 4px 6px -2px rgba(14, 165, 233, 0.08) !important;
+  border: 1px solid var(--color-brand-border) !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+}
+
+.leaflet-popup-content {
+  margin: 14px 16px !important;
+  margin-top: 0 !important;
+  font-family: var(--font-body), system-ui, sans-serif !important;
+}
+
+.leaflet-popup-content img {
+  margin: 0 !important;
+}
+
+.leaflet-popup-tip {
+  box-shadow: 0 3px 6px rgba(14, 165, 233, 0.12) !important;
+}
+
+@keyframes user-location-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4); }
+  50% { box-shadow: 0 0 0 12px rgba(59, 130, 246, 0); }
+}
+
+.user-location-pulse {
+  animation: user-location-pulse 2s ease-out infinite;
+}
+
+.custom-marker {
+  background: none !important;
+  border: none !important;
+}
+
+/* Vaul workaround: when modal=false, vaul sets pointer-events:none on body */
+body {
+  pointer-events: auto !important;
+}
+
+/* Ensure vaul drawer is above leaflet controls but below popups */
+[vaul-drawer] {
+  z-index: 1000 !important;
+}
+
+[vaul-overlay] {
+  z-index: 999 !important;
+}
+
+/* Smooth scrollbar */
+.overflow-y-auto::-webkit-scrollbar {
+  width: 4px;
+}
+.overflow-y-auto::-webkit-scrollbar-track {
+  background: transparent;
+}
+.overflow-y-auto::-webkit-scrollbar-thumb {
+  background: #BAE6FD;
+  border-radius: 4px;
+}
